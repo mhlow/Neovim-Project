@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmunsnoahptyb"]
+
+[ext_resource type="FontFile" uid="uid://cq78p0etv1f20" path="res://Typography/Fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf" id="1_xmnab"]
+[ext_resource type="CodeHighlighter" uid="uid://b4lo7x22s25mr" path="res://Typography/Syntax Highlighting/code_editor_highlighter.tres" id="2_i8rcn"]
+[ext_resource type="Script" path="res://editor.gd" id="2_qsgqj"]
+[ext_resource type="Script" path="res://Inputs/key_press_handler.gd" id="4_8jtrc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_qsgqj")
+
+[node name="Editor" type="CodeEdit" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 140.0
+offset_right = 661.0
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("1_xmnab")
+text = "#include <iostream>
+void foo (auto const& x, auto* y) {
+	if (!y || y[0]) return;
+	*y = x.value >> 2 + 0xff30a014;
+}"
+editable = false
+shortcut_keys_enabled = false
+scroll_smooth = true
+minimap_draw = true
+caret_type = 1
+caret_blink = true
+syntax_highlighter = ExtResource("2_i8rcn")
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+indent_use_spaces = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="KeyPressHandler" type="Control" parent="Editor"]
+anchors_preset = 0
+offset_left = -124.0
+offset_top = -140.0
+offset_right = -84.0
+offset_bottom = -100.0
+script = ExtResource("4_8jtrc")

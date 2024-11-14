@@ -1,0 +1,3 @@
+res://Editor.tscn
+res://Typography/Syntax Highlighting/code_editor_highlighter.gd
+res://Inputs/key_press_handler.gd

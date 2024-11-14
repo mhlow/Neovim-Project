@@ -1,0 +1,6 @@
+[gd_resource type="CodeHighlighter" script_class="CodeEditorSyntaxHighlighter" load_steps=2 format=3 uid="uid://b4lo7x22s25mr"]
+
+[ext_resource type="Script" path="res://Typography/Syntax Highlighting/code_editor_highlighter.gd" id="1_660wn"]
+
+[resource]
+script = ExtResource("1_660wn")
