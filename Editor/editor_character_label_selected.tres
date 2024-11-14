@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://tx74k7dv2w0r"]
+
+[ext_resource type="FontFile" uid="uid://cq78p0etv1f20" path="res://Typography/Fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf" id="1_nc6vk"]
+
+[resource]
+font = ExtResource("1_nc6vk")
+font_color = Color(0.0588235, 0.0588235, 0.0588235, 1)

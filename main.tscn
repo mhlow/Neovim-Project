@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmunsnoahptyb"]
+
+[ext_resource type="Script" path="res://Editor/editor.gd" id="1_ql3ej"]
+[ext_resource type="FontFile" uid="uid://cq78p0etv1f20" path="res://Typography/Fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf" id="2_n1jmg"]
+[ext_resource type="CodeHighlighter" uid="uid://b4lo7x22s25mr" path="res://Typography/Syntax Highlighting/code_editor_highlighter.tres" id="3_wp3gu"]
+[ext_resource type="Script" path="res://Inputs/key_press_handler.gd" id="4_j3ji8"]
+[ext_resource type="PackedScene" uid="uid://drfe8yhu163ge" path="res://Editor/visual_editor.tscn" id="5_vxds4"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ql3ej")
+
+[node name="Editor" type="CodeEdit" parent="."]
+layout_mode = 0
+offset_left = 1386.0
+offset_top = 494.0
+offset_right = 1923.0
+offset_bottom = 924.0
+theme_override_fonts/font = ExtResource("2_n1jmg")
+text = "#include <iostream>
+void foo (auto const& x, auto* y) {
+	if (!y || y[0]) return;
+	*y = x.value >> 2 + 0xff30a014;
+}"
+editable = false
+shortcut_keys_enabled = false
+scroll_smooth = true
+minimap_draw = true
+caret_type = 1
+caret_blink = true
+syntax_highlighter = ExtResource("3_wp3gu")
+gutters_draw_line_numbers = true
+code_completion_enabled = true
+indent_use_spaces = true
+indent_automatic = true
+auto_brace_completion_enabled = true
+auto_brace_completion_highlight_matching = true
+
+[node name="VisualEditor" parent="." instance=ExtResource("5_vxds4")]
+layout_mode = 1
+
+[node name="KeyPressHandler" type="Control" parent="VisualEditor"]
+layout_mode = 2
+script = ExtResource("4_j3ji8")

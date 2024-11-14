@@ -21,7 +21,7 @@ var _last_input : KeyPressSuper
 var _input_buffer : Array[KeyPressSuper]
 # --- @onready Variables ---
 # Could be dangerous idk
-@onready var _editor : CodeEdit = self.get_parent()
+@onready var _editor : VisualEditor = self.get_parent()
 
 # =============================================================
 # Methods
@@ -44,11 +44,12 @@ func _input(event: InputEvent) -> void:
 		for key_input in _key_inputs:
 			# Last input and this code just ensures multiple keys dont get registered
 			if Input.is_action_just_pressed(key_input.get_action_name()):
+				key_input.handle_key_press(_input_buffer, _editor)
 				_last_input = key_input
 				break
 			
 			if Input.is_action_pressed(key_input.get_action_name()) and _last_input == key_input:
-				key_input.handle_key_press()
+				key_input.handle_key_press(_input_buffer, _editor)
 		
 # --- Public Methods ---
 # --- Private Methods ---

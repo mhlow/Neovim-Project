@@ -1,1 +1,2 @@
+LabelSettings
 CodeHighlighter

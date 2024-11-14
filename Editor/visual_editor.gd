@@ -1,5 +1,5 @@
 # @tool
-class_name NormalModeRight extends KeyPressSuper 
+class_name VisualEditor extends VBoxContainer 
 # # docstring
 
 # =============================================================
@@ -11,7 +11,9 @@ class_name NormalModeRight extends KeyPressSuper
 # --- @export Variables ---
 # --- Public Variables ---
 # --- Private Variables ---
+var _caret_pos : Vector2i = Vector2i(0,0)
 # --- @onready Variables ---
+@onready var _editor_grid : EditorGridContainer = $GridContainer
 
 # =============================================================
 # Methods
@@ -21,7 +23,6 @@ func _ready() -> void:
 	pass
 
 func _init() -> void:
-	_action_name = "Normal Mode Right"
 	pass
 
 func _enter_tree() -> void:
@@ -31,10 +32,16 @@ func _process(delta: float) -> void:
 	pass
 
 # --- Public Methods ---
-func handle_key_press(input_buffer : Array[KeyPressSuper], visual_editor : VisualEditor) -> bool:
-	print("Caret Right")
-	var new_pos : Vector2i = Vector2i(visual_editor.get_caret_pos().x + 1, visual_editor.get_caret_pos().y)
-	visual_editor.change_caret_pos(new_pos)
+func change_caret_pos(new_pos : Vector2i) -> bool:
+	if not _valid_pos(new_pos):
+		return false
+	_editor_grid.select_character_box(_caret_pos, new_pos)
+	_caret_pos = new_pos
 	return true
-	
+
+func get_caret_pos() -> Vector2i:
+	return _caret_pos
+
 # --- Private Methods ---
+func _valid_pos(pos : Vector2i) -> bool:
+	return _editor_grid.valid_pos(pos)

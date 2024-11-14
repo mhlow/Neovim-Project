@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkrj2lfgqle3n"]
+
+[ext_resource type="StyleBox" uid="uid://ji7psmubf5g2" path="res://Editor/editor_character_box_default.tres" id="1_k4dlc"]
+
+[node name="Label" type="Label"]
+custom_minimum_size = Vector2(10, 20)
+offset_right = 10.0
+offset_bottom = 20.0
+theme_override_styles/normal = ExtResource("1_k4dlc")
+text = "i"

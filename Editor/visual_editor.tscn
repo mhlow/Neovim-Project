@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://drfe8yhu163ge"]
+
+[ext_resource type="Script" path="res://Editor/grid_container.gd" id="1_7tfjh"]
+[ext_resource type="Script" path="res://Editor/visual_editor.gd" id="1_txer4"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+offset_right = 600.0
+offset_bottom = 335.0
+script = ExtResource("1_txer4")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(600, 240)
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 30
+script = ExtResource("1_7tfjh")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2

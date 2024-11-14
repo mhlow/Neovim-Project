@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	pass
 
 # --- Public Methods ---
-func handle_key_press() -> bool:
+func handle_key_press(input_buffer : Array[KeyPressSuper], visual_editor : VisualEditor) -> bool:
 	print("handle_key_press() was not properly overridden")
 	return false
 
