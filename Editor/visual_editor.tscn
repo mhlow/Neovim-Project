@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://drfe8yhu163ge"]
+[gd_scene load_steps=4 format=3 uid="uid://drfe8yhu163ge"]
 
 [ext_resource type="Script" path="res://Editor/grid_container.gd" id="1_7tfjh"]
 [ext_resource type="Script" path="res://Editor/visual_editor.gd" id="1_txer4"]
+[ext_resource type="Script" path="res://Inputs/key_press_handler.gd" id="3_1pjxq"]
 
-[node name="VBoxContainer" type="VBoxContainer"]
+[node name="Visual Editor" type="VBoxContainer"]
 offset_right = 600.0
-offset_bottom = 335.0
+offset_bottom = 539.0
 script = ExtResource("1_txer4")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Screen Grid" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(600, 240)
 layout_mode = 2
 theme_override_constants/h_separation = 0
@@ -16,5 +17,28 @@ theme_override_constants/v_separation = 0
 columns = 30
 script = ExtResource("1_7tfjh")
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="Line Edit" type="LineEdit" parent="."]
 layout_mode = 2
+
+[node name="Key Press Handler" type="Control" parent="."]
+layout_mode = 2
+script = ExtResource("3_1pjxq")
+
+[node name="Hidden Editor" type="CodeEdit" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+text = "
+
+
+
+
+
+
+
+
+
+
+"
+
+[connection signal="caret_changed" from="Hidden Editor" to="." method="update_caret"]
+[connection signal="text_changed" from="Hidden Editor" to="." method="update_text"]

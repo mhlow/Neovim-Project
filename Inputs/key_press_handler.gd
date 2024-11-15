@@ -16,6 +16,8 @@ var _key_inputs : Array[KeyPressSuper] = [
 	NormalModeUp.new(),
 	NormalModeRight.new(),
 	NormalModeLeft.new(),
+	EnterInsertModei.new(),
+	EnterInsertModea.new(),
 ]
 var _last_input : KeyPressSuper
 var _input_buffer : Array[KeyPressSuper]
@@ -39,7 +41,7 @@ func _enter_tree() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _input(event: InputEvent) -> void:
+func vim_input(event: InputEvent) -> void:
 	if event.is_pressed():
 		for key_input in _key_inputs:
 			# Last input and this code just ensures multiple keys dont get registered

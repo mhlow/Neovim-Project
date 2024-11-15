@@ -1,5 +1,5 @@
 # @tool
-class_name NormalModeLeft extends KeyPressSuper 
+class_name EnterInsertModea extends KeyPressSuper 
 # # docstring
 
 # =============================================================
@@ -21,7 +21,7 @@ func _ready() -> void:
 	pass
 
 func _init() -> void:
-	_action_name = "Normal Mode Left"
+	_action_name = "Enter Insert Mode (a)"
 	pass
 
 func _enter_tree() -> void:
@@ -32,8 +32,6 @@ func _process(delta: float) -> void:
 
 # --- Public Methods ---
 func handle_key_press(input_buffer : Array[KeyPressSuper], visual_editor : VisualEditor) -> bool:
-	print("Caret Left")
-	var new_pos : Vector2i = Vector2i(visual_editor.get_caret_pos().x - 1, visual_editor.get_caret_pos().y)
-	visual_editor.set_caret_pos(new_pos)
+	visual_editor.enter_insert_mode(Vector2i(visual_editor.get_caret_pos().x + 1, visual_editor.get_caret_pos().y))
 	return true
 # --- Private Methods ---

@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 func handle_key_press(input_buffer : Array[KeyPressSuper], visual_editor : VisualEditor) -> bool:
 	print("Caret Right")
 	var new_pos : Vector2i = Vector2i(visual_editor.get_caret_pos().x + 1, visual_editor.get_caret_pos().y)
-	visual_editor.change_caret_pos(new_pos)
+	visual_editor.set_caret_pos(new_pos)
 	return true
 	
 # --- Private Methods ---
