@@ -1,5 +1,5 @@
 # @tool
-class_name NormalModeLeft extends KeyPressSuper 
+class_name NormalModew extends KeyPressSuper 
 # # docstring
 
 # =============================================================
@@ -21,7 +21,7 @@ func _ready() -> void:
 	pass
 
 func _init() -> void:
-	_action_name = "Normal Mode Left"
+	_action_name = "Normal Mode w"
 	pass
 
 func _enter_tree() -> void:
@@ -32,9 +32,9 @@ func _process(delta: float) -> void:
 
 # --- Public Methods ---
 func handle_key_press(input_buffer : Array[KeyPressSuper], visual_editor : VisualEditor) -> bool:
-	print("Caret Left")
-	visual_editor.last_vertical = false
-	var new_pos : Vector2i = Vector2i(visual_editor.get_caret_pos().x - 1, visual_editor.get_caret_pos().y)
-	visual_editor.set_caret_pos(new_pos)
+	print("Next word start (w)")
+	var text : String = visual_editor.get_text()
+	var caret_pos : Vector2i = visual_editor.get_caret_pos()
+	
 	return true
 # --- Private Methods ---

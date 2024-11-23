@@ -67,11 +67,11 @@ func valid_pos(pos : Vector2i) -> bool:
 			return true
 	return false
 
-func valid_insert_pos(pos : Vector2i) -> bool:
-	if pos.x >= 0 and pos.x < _grid_width + 1:
-		if pos.y >= 0 and pos.y < _grid_height:
-			return true
-	return false
+#func valid_insert_pos(pos : Vector2i) -> bool:
+	#if pos.x >= 0 and pos.x < _grid_width + 1:
+		#if pos.y >= 0 and pos.y < _grid_height:
+			#return true
+	#return false
 
 func select_character_box(old_pos : Vector2i, new_pos : Vector2i) -> void:
 	# Old cell
@@ -86,43 +86,56 @@ func select_character_box(old_pos : Vector2i, new_pos : Vector2i) -> void:
 	char_box.remove_theme_stylebox_override("normal")
 	char_box.add_theme_stylebox_override("normal", _editor_character_box_selected)
 
-func select_insert_character_box(new_pos : Vector2i) -> void:
-	for i in range(_grid_height):
-		for j in range(_grid_width):
-			var char_box : Label = _character_boxes[i][j]
-			char_box.label_settings = _editor_character_label_default
-			char_box.remove_theme_stylebox_override("normal")
-			char_box.add_theme_stylebox_override("normal", _editor_character_box_default)
-	
-	# New cell
-	var char_box : Label = _character_boxes[new_pos.y][new_pos.x]
-	char_box.label_settings = _editor_character_label_default
-	char_box.remove_theme_stylebox_override("normal")
-	char_box.add_theme_stylebox_override("normal", _editor_character_box_insert_left)
+#func select_insert_character_box(new_pos : Vector2i) -> void:
+	#for i in range(_grid_height):
+		#for j in range(_grid_width):
+			#var char_box : Label = _character_boxes[i][j]
+			#char_box.label_settings = _editor_character_label_default
+			#char_box.remove_theme_stylebox_override("normal")
+			#char_box.add_theme_stylebox_override("normal", _editor_character_box_default)
+	#
+	## New cell
+	#var char_box : Label = _character_boxes[new_pos.y][new_pos.x]
+	#char_box.label_settings = _editor_character_label_default
+	#char_box.remove_theme_stylebox_override("normal")
+	#char_box.add_theme_stylebox_override("normal", _editor_character_box_insert_left)
 
 func get_character_box(pos : Vector2i) -> Label:
 	var char_box : Label = _character_boxes[pos.y][pos.x]
 	return char_box
 
+# Gets the text of the screen, returning it as a string
 func get_text() -> String:
 	var return_string : String = ""
 	for char_line in _character_boxes:
 		for char_box : Label in char_line:
 			return_string += char_box.text
 		return_string += "\n"
-	print(return_string)
+	#print(return_string)
 	return return_string
 
+# Sets the text of the screen, given a paragraph of text. 
+# It does not print text which is longer than the grid width, nor
+# greater than the grid height.
 func set_text(text : String) -> void:
 	var text_array : PackedStringArray = text.split("\n")
 	text_array = text_array.slice(0, _grid_height)
-	for line_index in range(text_array.size()):
-		var line : String = _pad_and_cut_string_to_60(text_array[line_index])
-		print("Lenrskjthgrkjdst ", line.length())
-		for character_index in range(line.length()):
-			var char_box : Label = _character_boxes[line_index][character_index]
-			char_box.text = line[character_index]
-			
+	for line_index in range(_grid_height):
+		if line_index < text_array.size():
+			# Setting actual text
+			var line : String = _pad_and_cut_string_to_60(text_array[line_index])
+			for character_index in range(_grid_width):
+				var char_box : Label = _character_boxes[line_index][character_index]
+				if character_index < line.length():
+					char_box.text = line[character_index]
+				else:
+					char_box.text = ""
+		else:
+			# filling the rest with blank
+			for character_index in range(_grid_width):
+				_character_boxes[line_index][character_index].text = ""
+	
+
 # --- Private Methods ---
 func _pad_and_cut_string_to_60(input_string: String) -> String:
 	#if input_string.length() < _grid_width:

@@ -27,18 +27,18 @@ script = ExtResource("3_1pjxq")
 [node name="Hidden Editor" type="CodeEdit" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
-text = "
-
-
-
-
-
-
-
-
-
-
-"
+text = "1. Hello There!
+2. Text       more text
+3. 
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+11.
+12."
 
 [connection signal="caret_changed" from="Hidden Editor" to="." method="update_caret"]
 [connection signal="text_changed" from="Hidden Editor" to="." method="update_text"]

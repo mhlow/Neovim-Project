@@ -16,8 +16,7 @@ var _key_inputs : Array[KeyPressSuper] = [
 	NormalModeUp.new(),
 	NormalModeRight.new(),
 	NormalModeLeft.new(),
-	EnterInsertModei.new(),
-	EnterInsertModea.new(),
+	NormalModew.new()
 ]
 var _last_input : KeyPressSuper
 var _input_buffer : Array[KeyPressSuper]
