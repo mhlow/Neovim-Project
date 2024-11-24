@@ -1,5 +1,5 @@
 # @tool
-class_name NormalModeRight extends KeyPressSuper 
+class_name NormalModel extends KeyPressSuper 
 # # docstring
 
 # =============================================================
@@ -21,7 +21,7 @@ func _ready() -> void:
 	pass
 
 func _init() -> void:
-	_action_name = "Normal Mode Right"
+	_action_name = "Normal Mode l"
 	pass
 
 func _enter_tree() -> void:

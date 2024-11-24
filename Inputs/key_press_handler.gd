@@ -12,11 +12,12 @@ class_name KeyPressHandler extends Control
 # --- Public Variables ---
 # --- Private Variables ---
 var _key_inputs : Array[KeyPressSuper] = [
-	NormalModeDown.new(),
-	NormalModeUp.new(),
-	NormalModeRight.new(),
-	NormalModeLeft.new(),
-	NormalModew.new()
+	NormalModeh.new(),
+	NormalModej.new(),
+	NormalModek.new(),
+	NormalModel.new(),
+	NormalModeShiftW.new(),
+	NormalModew.new(),
 ]
 var _last_input : KeyPressSuper
 var _input_buffer : Array[KeyPressSuper]

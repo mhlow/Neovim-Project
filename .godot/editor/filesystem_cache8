@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1732323515
+::res://::1732424062
 icon.svg::CompressedTexture2D::6052504419811276688::1731299759::1731304123::1::::<><>::
-main.tscn::PackedScene::3270796532067717733::1732323515::0::1::::<><>::res://Editor/editor.gd<>uid://drfe8yhu163ge::::res://Editor/visual_editor.tscn
+main.tscn::PackedScene::3270796532067717733::1732424062::0::1::::<><>::res://Editor/editor.gd<>uid://drfe8yhu163ge::::res://Editor/visual_editor.tscn
 script_template.gd::GDScript::-1::1731559028::0::1::::Template<>RefCounted<>::
 ::res://addons/::1731304068
 ::res://addons/godot-vim/::1731304328
@@ -11,27 +11,29 @@ plugin.cfg::TextFile::-1::1731303838::0::1::::<><>::
 ::res://addons/godot-vim/godot-vim-main/::1731304062
 LICENSE.md::TextFile::-1::1731303838::0::1::::<><>::
 README.md::TextFile::-1::1731303838::0::1::::<><>::
-::res://Editor/::1732323515
+::res://Editor/::1732424112
 editor.gd::GDScript::-1::1731667597::0::1::::EditorController<>Control<>::
-editor_character_box.tscn::PackedScene::7896840164424279085::1732323515::0::1::::<><>::uid://grecqdacl0og::::res://Editor/editor_character_box_insert_left.tres<>uid://c3qmg4p4d60ls::::res://Editor/editor_character_label_default.tres
+editor_character_box.tscn::PackedScene::7896840164424279085::1732424062::0::1::::<><>::uid://grecqdacl0og::::res://Editor/editor_character_box_insert_left.tres<>uid://c3qmg4p4d60ls::::res://Editor/editor_character_label_default.tres
 editor_character_box_default.tres::StyleBoxFlat::650185310320101783::1731594581::0::1::::<><>::
-editor_character_box_insert_left.tres::StyleBoxTexture::456474768217236094::1732321995::0::1::::<><>::
+editor_character_box_insert_left.tres::StyleBoxTexture::456474768217236094::1732421519::0::1::::<><>::
 editor_character_box_selected.tres::StyleBoxFlat::5568039624842796924::1731572364::0::1::::<><>::
-editor_character_label_default.tres::LabelSettings::6771899899664796660::1732321995::0::1::::<><>::uid://cq78p0etv1f20::::res://Typography/Fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf
-editor_character_label_selected.tres::LabelSettings::1383064024090458563::1732321995::0::1::::<><>::uid://cq78p0etv1f20::::res://Typography/Fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf
-grid_container.gd::GDScript::-1::1732323061::0::1::::EditorGridContainer<>GridContainer<>::
-visual_editor.gd::GDScript::-1::1732323515::0::1::::VisualEditor<>VBoxContainer<>::
-visual_editor.tscn::PackedScene::8363097353184818584::1732323515::0::1::::<><>::res://Editor/grid_container.gd<>res://Editor/visual_editor.gd<>res://Inputs/key_press_handler.gd
-::res://Inputs/::1732322520
-key_press_handler.gd::GDScript::-1::1732322520::0::1::::KeyPressHandler<>Control<>::
+editor_character_label_default.tres::LabelSettings::6771899899664796660::1732421519::0::1::::<><>::uid://cq78p0etv1f20::::res://Typography/Fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf
+editor_character_label_selected.tres::LabelSettings::1383064024090458563::1732421519::0::1::::<><>::uid://cq78p0etv1f20::::res://Typography/Fonts/Fira_Code_v6.2/ttf/FiraCode-Regular.ttf
+grid_container.gd::GDScript::-1::1732347886::0::1::::EditorGridContainer<>GridContainer<>::
+visual_editor.gd::GDScript::-1::1732348375::0::1::::VisualEditor<>VBoxContainer<>::
+visual_editor.tscn::PackedScene::8363097353184818584::1732424112::0::1::::<><>::res://Editor/grid_container.gd<>res://Editor/visual_editor.gd<>res://Inputs/key_press_handler.gd
+::res://Inputs/::1732424062
+key_press_handler.gd::GDScript::-1::1732424062::0::1::::KeyPressHandler<>Control<>::
 key_press_parent.gd::GDScript::-1::1731573260::0::1::::KeyPressSuper<>RefCounted<>::
-::res://Inputs/KeyInputs/::1731668726
+regex.gd::GDScript::-1::1732423524::0::1::::RG<>RefCounted<>::
+::res://Inputs/KeyInputs/::1732424031
 enter_insert_mode_a.gd::GDScript::-1::1731668726::0::1::::EnterInsertModea<>KeyPressSuper<>::
 enter_insert_mode_i.gd::GDScript::-1::1731668717::0::1::::EnterInsertModei<>KeyPressSuper<>::
-normal_mode_down.gd::GDScript::-1::1731649278::0::1::::NormalModeDown<>KeyPressSuper<>::
-normal_mode_left.gd::GDScript::-1::1731649278::0::1::::NormalModeLeft<>KeyPressSuper<>::
-normal_mode_right.gd::GDScript::-1::1731649288::0::1::::NormalModeRight<>KeyPressSuper<>::
-normal_mode_up.gd::GDScript::-1::1731649291::0::1::::NormalModeUp<>KeyPressSuper<>::
+normal_mode_down.gd::GDScript::-1::1732424031::0::1::::NormalModej<>KeyPressSuper<>::
+normal_mode_left.gd::GDScript::-1::1732423991::0::1::::NormalModeh<>KeyPressSuper<>::
+normal_mode_right.gd::GDScript::-1::1732423991::0::1::::NormalModel<>KeyPressSuper<>::
+normal_mode_up.gd::GDScript::-1::1732424031::0::1::::NormalModek<>KeyPressSuper<>::
+normal_mode_w.gd::GDScript::-1::1732423829::0::1::::NormalModew<>KeyPressSuper<>::
 ::res://Typography/::1731567880
 ::res://Typography/Fonts/::1731302848
 ::res://Typography/Fonts/Fira_Code_v6.2/::1731302846
@@ -59,6 +61,6 @@ FiraCode-Medium.woff2::FontFile::4508356740197490781::1731302847::1731304804::1:
 FiraCode-Regular.woff2::FontFile::8152634097320523099::1731302847::1731304804::1::::<><>::
 FiraCode-SemiBold.woff2::FontFile::8844480416568931168::1731302847::1731304804::1::::<><>::
 FiraCode-VF.woff2::FontFile::6421965664273426384::1731302847::1731304804::1::::<><>::
-::res://Typography/Syntax Highlighting/::1732322668
-code_editor_highlighter.gd::GDScript::-1::1732322668::0::1::::CodeEditorSyntaxHighlighter<>CodeHighlighter<>::
+::res://Typography/Syntax Highlighting/::1732421768
+code_editor_highlighter.gd::GDScript::-1::1732421768::0::1::::CodeEditorSyntaxHighlighter<>CodeHighlighter<>::
 code_editor_highlighter.tres::CodeHighlighter/CodeEditorSyntaxHighlighter::4445513738793064249::1731326878::0::1::::<><>::res://Typography/Syntax Highlighting/code_editor_highlighter.gd

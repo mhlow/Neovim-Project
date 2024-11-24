@@ -1,5 +1,5 @@
 # @tool
-class_name NormalModeh extends KeyPressSuper 
+class_name RG extends RefCounted 
 # # docstring
 
 # =============================================================
@@ -21,7 +21,6 @@ func _ready() -> void:
 	pass
 
 func _init() -> void:
-	_action_name = "Normal Mode h"
 	pass
 
 func _enter_tree() -> void:
@@ -31,10 +30,20 @@ func _process(delta: float) -> void:
 	pass
 
 # --- Public Methods ---
-func handle_key_press(input_buffer : Array[KeyPressSuper], visual_editor : VisualEditor) -> bool:
-	print("Caret Left")
-	visual_editor.last_vertical = false
-	var new_pos : Vector2i = Vector2i(visual_editor.get_caret_pos().x - 1, visual_editor.get_caret_pos().y)
-	visual_editor.set_caret_pos(new_pos)
-	return true
+# Checks if the whole string is composed of alphanumeric values
+static func is_alphanumeric(str : String) -> bool:
+	var regex : RegEx = RegEx.new()
+	regex.compile("^[a-zA-Z0-9]*$")
+	var result = regex.search(str)
+	if result:
+		return result.get_string(0) == str
+	return false
+
+static func is_whitespace(str : String) -> bool:
+	var regex : RegEx = RegEx.new()
+	regex.compile("^\\s*$")
+	var result = regex.search(str)
+	if result:
+		return result.get_string(0) == str
+	return false
 # --- Private Methods ---
