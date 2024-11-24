@@ -20,10 +20,10 @@ enum Mode {
 # --- @export Variables ---
 # --- Public Variables ---
 var last_vertical : bool = false
+var last_vertical_caret_pos : Vector2i = Vector2i(0,0)
 # --- Private Variables ---
 var _mode : Mode = Mode.NORMAL
 var _caret_pos : Vector2i = Vector2i(0,0)
-var _last_vertical_caret_pos : Vector2i = Vector2i(0,0)
 var _hidden_editor_caret : Vector2i = Vector2i(0,0)
 # --- @onready Variables ---
 @onready var _editor_grid : EditorGridContainer = $"Screen Grid"
@@ -86,29 +86,11 @@ func set_caret_pos(new_pos : Vector2i) -> bool:
 		return false
 	
 	var line : String = _editor_grid.get_text().split("\n")[new_pos.y]
-	if last_vertical:
-		# go up and down on the column
-		new_pos.x = _last_vertical_caret_pos.x
-		if max(line.length() - 1, 0) >= new_pos.x:
-			last_vertical = false
-			
-		if max(line.length() - 1, 0) < new_pos.x:
-			# Move cursor to last position of the line
-			new_pos.x -= 1
-			while (_valid_pos(new_pos) and max(line.length() - 1, 0) < new_pos.x):
-				new_pos.x -= 1
-	
-	elif max(line.length() - 1, 0) < new_pos.x:
-		# Move cursor to last position of the line
-		_last_vertical_caret_pos = Vector2i(_caret_pos.x, _caret_pos.y)
-		last_vertical = true
-		new_pos.x -= 1
-		while (_valid_pos(new_pos) and max(line.length() - 1, 0) < new_pos.x):
-			new_pos.x -= 1
+	new_pos.x = min(new_pos.x, line.length() - 1)
 	
 	_editor_grid.select_character_box(_caret_pos, new_pos)
 	_caret_pos = new_pos
-	
+	print(_caret_pos)
 	return true
 
 #func enter_insert_mode(new_pos : Vector2i) -> void:

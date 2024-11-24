@@ -1,5 +1,5 @@
 # @tool
-class_name NormalModew extends KeyPressSuper 
+class_name NormalModeb extends KeyPressSuper 
 # # docstring
 
 # =============================================================
@@ -21,7 +21,7 @@ func _ready() -> void:
 	pass
 
 func _init() -> void:
-	_action_name = "Normal Mode w"
+	_action_name = "Normal Mode b"
 	pass
 
 func _enter_tree() -> void:
@@ -32,12 +32,12 @@ func _process(delta: float) -> void:
 
 # --- Public Methods ---
 func handle_key_press(input_buffer : Array[KeyPressSuper], visual_editor : VisualEditor) -> bool:
-	print("Next word start (w)")
+	print("Previous word start (b)")
 	var text : String = visual_editor.get_text()
 	var new_pos : Vector2i = visual_editor.get_caret_pos()
 	var line : String = text.split("\n")[new_pos.y]
-	while new_pos.x < line.length() - 1:
-		new_pos.x += 1
+	while new_pos.x > 0:
+		new_pos.x -= 1
 		if not RG.is_whitespace(line[new_pos.x]):
 			# Separated by whitespace
 			if RG.is_whitespace(line[new_pos.x - 1]):

@@ -46,4 +46,7 @@ static func is_whitespace(str : String) -> bool:
 	if result:
 		return result.get_string(0) == str
 	return false
+
+static func is_special(str : String) -> bool:
+	return not is_whitespace(str) and not is_alphanumeric(str)
 # --- Private Methods ---

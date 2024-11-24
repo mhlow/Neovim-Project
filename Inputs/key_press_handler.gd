@@ -18,6 +18,10 @@ var _key_inputs : Array[KeyPressSuper] = [
 	NormalModel.new(),
 	NormalModeShiftW.new(),
 	NormalModew.new(),
+	NormalModeShiftE.new(),
+	NormalModee.new(),
+	NormalModeShiftB.new(),
+	NormalModeb.new(),
 ]
 var _last_input : KeyPressSuper
 var _input_buffer : Array[KeyPressSuper]

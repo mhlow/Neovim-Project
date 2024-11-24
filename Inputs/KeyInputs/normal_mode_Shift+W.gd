@@ -36,7 +36,7 @@ func handle_key_press(input_buffer : Array[KeyPressSuper], visual_editor : Visua
 	var text : String = visual_editor.get_text()
 	var new_pos : Vector2i = visual_editor.get_caret_pos()
 	var line : String = text.split("\n")[new_pos.y]
-	while new_pos.x < line.length() - 1: 
+	while new_pos.x < line.length() - 1:
 		new_pos.x += 1
 		# New word detected
 		if RG.is_whitespace(line[new_pos.x - 1]) and not RG.is_whitespace(line[new_pos.x]):
