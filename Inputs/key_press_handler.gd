@@ -12,6 +12,8 @@ class_name KeyPressHandler extends Control
 # --- Public Variables ---
 # --- Private Variables ---
 var _key_inputs : Array[KeyPressSuper] = [
+	NormalModeShift4.new(),
+	NormalMode0.new(),
 	NormalModeShiftH.new(),
 	NormalModeShiftM.new(),
 	NormalModeShiftL.new(),

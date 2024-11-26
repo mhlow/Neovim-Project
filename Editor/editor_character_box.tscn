@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkrj2lfgqle3n"]
+[gd_scene load_steps=2 format=3 uid="uid://dkrj2lfgqle3n"]
 
-[ext_resource type="StyleBox" uid="uid://grecqdacl0og" path="res://Editor/editor_character_box_insert_left.tres" id="1_aao2m"]
-[ext_resource type="LabelSettings" uid="uid://c3qmg4p4d60ls" path="res://Editor/editor_character_label_default.tres" id="2_my0im"]
+[ext_resource type="Script" path="res://Editor/editor_character_box.gd" id="3_kmegd"]
 
-[node name="Label" type="Label"]
+[node name="Character Box" type="Label"]
 custom_minimum_size = Vector2(10, 20)
 offset_right = 10.0
 offset_bottom = 20.0
-theme_override_styles/normal = ExtResource("1_aao2m")
-label_settings = ExtResource("2_my0im")
+script = ExtResource("3_kmegd")

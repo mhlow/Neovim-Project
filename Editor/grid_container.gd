@@ -15,13 +15,8 @@ const _total_cells : int = _grid_height * _grid_width
 # --- Public Variables ---
 # --- Private Variables ---
 var _character_boxes : Array[Array]
+var _caret_pos : Vector2i = Vector2i(0,0)
 # --- @onready Variables ---
-@onready var _editor_character_box_default : StyleBox = preload("res://Editor/editor_character_box_default.tres")
-@onready var _editor_character_box_selected : StyleBox = preload("res://Editor/editor_character_box_selected.tres")
-@onready var _editor_character_box_insert_left : StyleBox = preload("res://Editor/editor_character_box_insert_left.tres")
-
-@onready var _editor_character_label_default : LabelSettings = preload("res://Editor/editor_character_label_default.tres")
-@onready var _editor_character_label_selected : LabelSettings = preload("res://Editor/editor_character_label_selected.tres")
 @onready var _editor_character_box : PackedScene = preload("res://Editor/editor_character_box.tscn")
 
 # =============================================================
@@ -34,22 +29,15 @@ func _ready() -> void:
 	add_theme_constant_override("h_separation", 0)
 	add_theme_constant_override("v_separation", 0)
 	
-	# Add all the labels
+	# Add all the CharacterBoxs
 	for i in range(_grid_height):
-		var new_row : Array[Label]
+		var new_row : Array[CharacterBox]
 		_character_boxes.append(new_row)
 		for j in range(_grid_width):
-			var new_cell : Label = _editor_character_box.instantiate()
-			
-			new_cell.add_theme_stylebox_override("normal", _editor_character_box_default)
-			new_cell.label_settings = _editor_character_label_default
-			
+			var new_cell : CharacterBox = _editor_character_box.instantiate()
 			add_child(new_cell)
 			_character_boxes[i].append(new_cell)
-			
-	var top_left : Label = _character_boxes[0][0]
-	top_left.add_theme_stylebox_override("normal", _editor_character_box_selected)
-	top_left.label_settings = _editor_character_label_selected
+	_character_boxes[0][0].set_state(CharacterBox.State.SELECTED)
 
 func _init() -> void:
 	pass
@@ -58,7 +46,7 @@ func _enter_tree() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	pass
+	render_screen()
 
 # --- Public Methods ---
 func valid_pos(pos : Vector2i) -> bool:
@@ -73,19 +61,13 @@ func valid_pos(pos : Vector2i) -> bool:
 			#return true
 	#return false
 
-func select_character_box(old_pos : Vector2i, new_pos : Vector2i) -> void:
-	# Old cell
-	var char_box : Label = _character_boxes[old_pos.y][old_pos.x]
-	char_box.label_settings = _editor_character_label_default
-	char_box.remove_theme_stylebox_override("normal")
-	char_box.add_theme_stylebox_override("normal", _editor_character_box_default)
+func render_screen() -> void:
+	for y in range(_grid_height):
+		for x in range(_grid_width):
+			var char_box : CharacterBox = _character_boxes[y][x]
+			char_box.set_state(CharacterBox.State.DEFAULT)
+	_character_boxes[_caret_pos.y][_caret_pos.x].set_state(CharacterBox.State.SELECTED)
 	
-	# New cell
-	char_box = _character_boxes[new_pos.y][new_pos.x]
-	char_box.label_settings = _editor_character_label_selected
-	char_box.remove_theme_stylebox_override("normal")
-	char_box.add_theme_stylebox_override("normal", _editor_character_box_selected)
-
 #func select_insert_character_box(new_pos : Vector2i) -> void:
 	#for i in range(_grid_height):
 		#for j in range(_grid_width):
@@ -100,15 +82,15 @@ func select_character_box(old_pos : Vector2i, new_pos : Vector2i) -> void:
 	#char_box.remove_theme_stylebox_override("normal")
 	#char_box.add_theme_stylebox_override("normal", _editor_character_box_insert_left)
 
-func get_character_box(pos : Vector2i) -> Label:
-	var char_box : Label = _character_boxes[pos.y][pos.x]
-	return char_box
+#func get_character_box(pos : Vector2i) -> Label:
+	#var char_box : Label = _character_boxes[pos.y][pos.x]
+	#return char_box
 
 # Gets the text of the screen, returning it as a string
 func get_text() -> String:
 	var return_string : String = ""
 	for char_line in _character_boxes:
-		for char_box : Label in char_line:
+		for char_box : CharacterBox in char_line:
 			return_string += char_box.text
 		return_string += "\n"
 	#print(return_string)
@@ -125,7 +107,7 @@ func set_text(text : String) -> void:
 			# Setting actual text
 			var line : String = _pad_and_cut_string_to_60(text_array[line_index])
 			for character_index in range(_grid_width):
-				var char_box : Label = _character_boxes[line_index][character_index]
+				var char_box : CharacterBox = _character_boxes[line_index][character_index]
 				if character_index < line.length():
 					char_box.text = line[character_index]
 				else:
@@ -137,6 +119,13 @@ func set_text(text : String) -> void:
 
 func get_grid_dims() -> Vector2i:
 	return Vector2i(_grid_width, _grid_height)
+
+func get_caret_pos() -> Vector2i:
+	return _caret_pos
+
+func set_caret_pos(new_pos : Vector2i) -> bool:
+	_caret_pos = new_pos
+	return true
 
 # --- Private Methods ---
 func _pad_and_cut_string_to_60(input_string: String) -> String:

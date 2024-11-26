@@ -7,3 +7,7 @@ res://Editor/grid_container.gd
 res://Editor/editor_character_box.tscn
 res://Typography/Syntax Highlighting/code_editor_highlighter.gd
 res://Editor/visual_editor.gd
+res://Inputs/KeyInputs/normal_mode_$.gd
+res://Inputs/key_press_handler.gd
+res://Inputs/KeyInputs/normal_mode_0.gd
+res://Editor/editor_character_box.gd

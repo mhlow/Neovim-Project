@@ -23,7 +23,6 @@ var last_vertical : bool = false
 var last_vertical_caret_pos : Vector2i = Vector2i(0,0)
 # --- Private Variables ---
 var _mode : Mode = Mode.NORMAL
-var _caret_pos : Vector2i = Vector2i(0,0)
 var _hidden_editor_caret : Vector2i = Vector2i(0,0)
 # --- @onready Variables ---
 @onready var _editor_grid : EditorGridContainer = $"Screen Grid"
@@ -91,9 +90,8 @@ func set_caret_pos(new_pos : Vector2i) -> bool:
 	var line : String = _editor_grid.get_text().split("\n")[new_pos.y]
 	new_pos.x = min(new_pos.x, max(line.length() - 1, 0))
 	
-	_editor_grid.select_character_box(_caret_pos, new_pos)
-	_caret_pos = new_pos
-	print(_caret_pos)
+	#_editor_grid.select_character_box(_caret_pos, new_pos)
+	_editor_grid.set_caret_pos(new_pos)
 	return true
 
 #func enter_insert_mode(new_pos : Vector2i) -> void:
@@ -105,7 +103,7 @@ func set_caret_pos(new_pos : Vector2i) -> bool:
 	#_mode = Mode.INSERT
 
 func get_caret_pos() -> Vector2i:
-	return _caret_pos
+	return _editor_grid.get_caret_pos()
 
 func get_hidden_editor() -> CodeEdit:
 	return _hidden_editor
