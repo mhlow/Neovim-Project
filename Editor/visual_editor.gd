@@ -35,6 +35,9 @@ var _hidden_editor_caret : Vector2i = Vector2i(0,0)
 # =============================================================
 # --- Initialisations ---
 func _ready() -> void:
+	while _hidden_editor.text.split("\n").size() < _editor_grid.get_grid_dims().y:
+		_hidden_editor.text += "\n"
+	print(_hidden_editor.text.split("\n").size())
 	_editor_grid.set_text(_hidden_editor.text)
 
 func _init() -> void:
@@ -86,7 +89,7 @@ func set_caret_pos(new_pos : Vector2i) -> bool:
 		return false
 	
 	var line : String = _editor_grid.get_text().split("\n")[new_pos.y]
-	new_pos.x = min(new_pos.x, line.length() - 1)
+	new_pos.x = min(new_pos.x, max(line.length() - 1, 0))
 	
 	_editor_grid.select_character_box(_caret_pos, new_pos)
 	_caret_pos = new_pos
@@ -120,6 +123,9 @@ func get_mode() -> Mode:
 
 func get_text() -> String:
 	return _editor_grid.get_text()
+
+func get_grid_container() -> EditorGridContainer:
+	return _editor_grid
 
 # --- Private Methods ---
 func _valid_pos(pos : Vector2i) -> bool:

@@ -134,7 +134,9 @@ func set_text(text : String) -> void:
 			# filling the rest with blank
 			for character_index in range(_grid_width):
 				_character_boxes[line_index][character_index].text = ""
-	
+
+func get_grid_dims() -> Vector2i:
+	return Vector2i(_grid_width, _grid_height)
 
 # --- Private Methods ---
 func _pad_and_cut_string_to_60(input_string: String) -> String:

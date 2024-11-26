@@ -37,8 +37,7 @@ text = "1. Hello There!
 8.
 9.
 10.
-11.
-12."
+11."
 
 [connection signal="caret_changed" from="Hidden Editor" to="." method="update_caret"]
 [connection signal="text_changed" from="Hidden Editor" to="." method="update_text"]
