@@ -35,9 +35,14 @@ func _ready() -> void:
 		_character_boxes.append(new_row)
 		for j in range(_grid_width):
 			var new_cell : CharacterBox = _editor_character_box.instantiate()
+			new_cell.connect("game_over", _game_over)
 			add_child(new_cell)
 			_character_boxes[i].append(new_cell)
 	_character_boxes[0][0].set_state(CharacterBox.State.SELECTED)
+	
+	# why the fuck is this required
+	render_screen()
+	
 
 func _init() -> void:
 	pass
@@ -46,7 +51,7 @@ func _enter_tree() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	render_screen()
+	pass
 
 # --- Public Methods ---
 func valid_pos(pos : Vector2i) -> bool:
@@ -124,11 +129,20 @@ func get_caret_pos() -> Vector2i:
 	return _caret_pos
 
 func set_caret_pos(new_pos : Vector2i) -> bool:
+	_character_boxes[_caret_pos.y][_caret_pos.x].set_state(CharacterBox.State.DEFAULT)
+	_character_boxes[new_pos.y][new_pos.x].set_state(CharacterBox.State.SELECTED)
 	_caret_pos = new_pos
 	return true
+
+func attack_cells(cells : Array) -> void:
+	for cell in cells:
+		_character_boxes[cell[0]][cell[1]].set_state(CharacterBox.State.CHARGINGATTACK)
 
 # --- Private Methods ---
 func _pad_and_cut_string_to_60(input_string: String) -> String:
 	#if input_string.length() < _grid_width:
 		#return input_string + " ".repeat(_grid_width - input_string.length())
 	return input_string.substr(0, _grid_width)
+
+func _game_over() -> void:
+	print("Game Over")

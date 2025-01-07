@@ -38,6 +38,11 @@ func _ready() -> void:
 		_hidden_editor.text += "\n"
 	print(_hidden_editor.text.split("\n").size())
 	_editor_grid.set_text(_hidden_editor.text)
+	
+	attack_cells([
+		[0,4],
+		[0,5]
+	])
 
 func _init() -> void:
 	pass
@@ -124,6 +129,9 @@ func get_text() -> String:
 
 func get_grid_container() -> EditorGridContainer:
 	return _editor_grid
+
+func attack_cells(cells : Array) -> void:
+	_editor_grid.attack_cells(cells)
 
 # --- Private Methods ---
 func _valid_pos(pos : Vector2i) -> bool:

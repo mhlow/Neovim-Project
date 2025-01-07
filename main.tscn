@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmunsnoahptyb"]
+[gd_scene load_steps=6 format=3 uid="uid://bmunsnoahptyb"]
 
 [ext_resource type="Script" path="res://Editor/editor.gd" id="1_ql3ej"]
+[ext_resource type="Texture2D" uid="uid://csh44mhqu2ohs" path="res://icon.svg" id="3_umms7"]
+[ext_resource type="Script" path="res://Enemy/enemy_1.gd" id="4_ox6nb"]
 [ext_resource type="PackedScene" uid="uid://drfe8yhu163ge" path="res://Editor/visual_editor.tscn" id="5_vxds4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qs1mi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_umms7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,3 +27,15 @@ script = ExtResource("1_ql3ej")
 
 [node name="VisualEditor" parent="." instance=ExtResource("5_vxds4")]
 layout_mode = 1
+
+[node name="Enemy1" type="AnimatedSprite2D" parent="."]
+position = Vector2(924, 115)
+sprite_frames = SubResource("SpriteFrames_qs1mi")
+script = ExtResource("4_ox6nb")
+
+[node name="AttackTimer1" type="Timer" parent="Enemy1"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy1"]
+position = Vector2(-924, -115)
+
+[connection signal="timeout" from="Enemy1/AttackTimer1" to="Enemy1" method="_on_attack_timer_1_timeout"]

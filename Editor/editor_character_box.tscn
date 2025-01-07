@@ -5,5 +5,12 @@
 [node name="Character Box" type="Label"]
 custom_minimum_size = Vector2(10, 20)
 offset_right = 10.0
-offset_bottom = 20.0
+offset_bottom = 23.0
 script = ExtResource("3_kmegd")
+
+[node name="Charging Timer" type="Timer" parent="."]
+
+[node name="Attack Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Charging Timer" to="." method="_on_charging_timer_timeout"]
+[connection signal="timeout" from="Attack Timer" to="." method="_on_attack_timer_timeout"]
