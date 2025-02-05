@@ -1,12 +1,12 @@
-res://Editor/visual_editor.tscn
+res://main.tscn
+res://Editor/editor_character_box.gd
 res://Editor/editor_character_label_default.tres
 res://Editor/editor_character_label_selected.tres
-res://main.tscn
-res://Editor/editor.gd
-res://Typography/Syntax Highlighting/code_editor_highlighter.gd
-res://Enemy/enemy_1.gd
+res://Editor/visual_editor.tscn
 res://Editor/editor_character_box.tscn
+res://Editor/editor_character_box_charging_attack.tres
+res://Typography/Syntax Highlighting/code_editor_highlighter.gd
+res://Editor/h_line_attacker.gd
 res://Editor/visual_editor.gd
-res://Editor/grid_container.gd
-res://Editor/editor_character_box.gd
-res://Editor/editor_character_box_attack.tres
+res://Editor/v_line_attacker.gd
+res://game_over.tscn

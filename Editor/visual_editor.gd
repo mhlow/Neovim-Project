@@ -38,11 +38,6 @@ func _ready() -> void:
 		_hidden_editor.text += "\n"
 	print(_hidden_editor.text.split("\n").size())
 	_editor_grid.set_text(_hidden_editor.text)
-	
-	attack_cells([
-		[0,4],
-		[0,5]
-	])
 
 func _init() -> void:
 	pass

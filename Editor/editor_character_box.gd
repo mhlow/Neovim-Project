@@ -25,6 +25,7 @@ var _state : State = State.DEFAULT
 
 @onready var _editor_character_box_default : StyleBox = preload("res://Editor/editor_character_box_default.tres")
 @onready var _editor_character_box_selected : StyleBox = preload("res://Editor/editor_character_box_selected.tres")
+@onready var _editor_character_box_charging_attack : StyleBox = preload("res://Editor/editor_character_box_charging_attack.tres")
 @onready var _editor_character_box_attack : StyleBox = preload("res://Editor/editor_character_box_attack.tres")
 #@onready var _editor_character_box_insert_left : StyleBox = preload("res://Editor/editor_character_box_insert_left.tres")
 
@@ -69,12 +70,14 @@ func set_state(state : State) -> void:
 			label_settings = _editor_character_label_selected
 		State.CHARGINGATTACK:
 			chargingTimer.start()
-			print("set to charging attack")
+			remove_theme_stylebox_override("normal")
+			add_theme_stylebox_override("normal", _editor_character_box_charging_attack)
+			#print("set to charging attack")
 		State.ATTACK:
 			attackTimer.start()
 			remove_theme_stylebox_override("normal")
 			add_theme_stylebox_override("normal", _editor_character_box_attack)
-			print("set to attack")
+			#print("set to attack")
 
 # --- Private Methods ---
 

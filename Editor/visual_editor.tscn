@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://drfe8yhu163ge"]
+[gd_scene load_steps=6 format=3 uid="uid://drfe8yhu163ge"]
 
 [ext_resource type="Script" path="res://Editor/grid_container.gd" id="1_7tfjh"]
 [ext_resource type="Script" path="res://Editor/visual_editor.gd" id="1_txer4"]
 [ext_resource type="Script" path="res://Inputs/key_press_handler.gd" id="3_1pjxq"]
+[ext_resource type="Script" path="res://Editor/h_line_attacker.gd" id="4_ubrg7"]
+[ext_resource type="Script" path="res://Editor/v_line_attacker.gd" id="5_iq205"]
 
 [node name="Visual Editor" type="VBoxContainer"]
 offset_right = 600.0
@@ -39,5 +41,25 @@ text = "1. Hello There!
 10.
 11."
 
+[node name="HLine Attacker" type="Control" parent="." node_paths=PackedStringArray("_editor_grid")]
+layout_mode = 2
+script = ExtResource("4_ubrg7")
+_editor_grid = NodePath("../Screen Grid")
+
+[node name="Attack Cooldown" type="Timer" parent="HLine Attacker"]
+one_shot = true
+autostart = true
+
+[node name="VLine Attacker" type="Control" parent="." node_paths=PackedStringArray("_editor_grid")]
+layout_mode = 2
+script = ExtResource("5_iq205")
+_editor_grid = NodePath("../Screen Grid")
+
+[node name="Attack Cooldown" type="Timer" parent="VLine Attacker"]
+one_shot = true
+autostart = true
+
 [connection signal="caret_changed" from="Hidden Editor" to="." method="update_caret"]
 [connection signal="text_changed" from="Hidden Editor" to="." method="update_text"]
+[connection signal="timeout" from="HLine Attacker/Attack Cooldown" to="HLine Attacker" method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="VLine Attacker/Attack Cooldown" to="VLine Attacker" method="_on_attack_cooldown_timeout"]
